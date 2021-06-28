@@ -41,8 +41,7 @@ namespace Lab4.Controllers
                 viewModel.Categories= _dbContext.Categories.ToList();
                 return View("Create", viewModel);
             }
-
-                var course = new Course
+            var course = new Course
             {
                 LecturerId = User.Identity.GetUserId(),
                 DateTime = viewModel.GetDateTime(),
