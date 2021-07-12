@@ -5,13 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Lab4.ViewModels;
 
 namespace Lab4.Controllers
 {
     public class HomeController : Controller
     {
 
-        private ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
         public HomeController()
         {
             _dbContext = new ApplicationDbContext();
@@ -22,7 +23,13 @@ namespace Lab4.Controllers
                 .Include(c => c.Lecturer)
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
-            return View(upcommingCourses);
+            
+            var viewModel = new CoursesViewModel
+            {
+                UpcommingCourses = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
 
             /*public ActionResult Index()

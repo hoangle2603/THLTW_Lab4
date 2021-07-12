@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
+
 namespace Lab4.Models
 {
     public class Attendance
@@ -16,6 +17,7 @@ namespace Lab4.Models
         public ApplicationUser Attendee { get; set; }
         [Key]
         [Column(Order = 2)]
-        public string Attendeeld { get; set; }
+        public string AttendeeId { get; set; }
+        //36
     }
 }

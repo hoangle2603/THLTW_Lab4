@@ -26,21 +26,23 @@ namespace Lab4.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Attendance>()
-            .HasRequired(a => a.Course)
-            .WithMany()
-            .WillCascadeOnDelete(false);
+                .HasRequired(a => a.Course)
+                .WithMany()
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
-            .HasMany(u => u.Followers)
-            .WithRequired(f => f.Followee)
-            .WillCascadeOnDelete(false);
+                .HasMany(u => u.Followers)
+                .WithRequired(f => f.Followee)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
-            .HasMany(u => u.Followees)
-            .WithRequired(f => f.Follower)
-            .WillCascadeOnDelete(false);
+                .HasMany(u => u.Followees)
+                .WithRequired(f => f.Follower)
+                .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
+
+            //37
         }
     }
 }
