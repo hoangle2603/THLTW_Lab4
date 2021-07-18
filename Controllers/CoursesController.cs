@@ -54,7 +54,7 @@ namespace Lab4.Controllers
             };
             _dbContext.Courses.Add(course);
             _dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Mine", "Courses");
         }
 
         [Authorize]
@@ -103,7 +103,6 @@ namespace Lab4.Controllers
                 Place = course.Place,
                 Heading = "Edit Course",
                 Id = course.Id
-
             };
             return View("Create", viewModel);
         }
